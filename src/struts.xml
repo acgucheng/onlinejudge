@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<package name="fuck" extends="struts-default">
-		<action name="index" class="cn.acgucheng.onlinejudge.action.FuckAction">
-			<result name="fuck2" type="redirect">/index.jsp</result>
+	<package name="redirect" extends="struts-default" namespace="/">
+		<action name="index" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="indexRedirect">
+			<result name="indexPage">/index.jsp</result>
+		</action>
+		<action name="regist" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="registRedirect">
+			<result name="registPage">/regist.jsp</result>
+		</action>
+	</package>
+	
+	<package name="regist" extends="struts-default" namespace="/">
+		<action name="student_regist" class="cn.acgucheng.onlinejudge.action.RegistAction" method="regist">
+			<result name="success">/index.jsp</result>
 		</action>
 	</package>
 </struts>    
