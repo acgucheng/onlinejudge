@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="student" catalog="onlinejudge">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="teacher" catalog="onlinejudge">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="problem" catalog="onlinejudge">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="exam" catalog="onlinejudge">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="student_exam" catalog="onlinejudge">
+		<primary-key>
+			<generator class="foreign"></generator>
+		</primary-key>
+	</table>
+<table name="exam_problem" catalog="onlinejudge">
+	<primary-key>
+		<generator class="foreign"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>
