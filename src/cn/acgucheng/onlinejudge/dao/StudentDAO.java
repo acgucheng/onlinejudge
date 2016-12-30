@@ -95,6 +95,7 @@ public class StudentDAO extends BaseHibernateDAO {
 			queryObject.setParameter(0, value);
 			return queryObject.list();
 		} catch (RuntimeException re) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 			log.error("find by property name failed", re);
 			throw re;
 		}

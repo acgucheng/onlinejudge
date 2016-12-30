@@ -53,6 +53,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		function checkUserName(){
 			
+			var xhr = createXmlHttp();
+			var username = document.getElementById("username").value;
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						alert("fuck");
+						document.getElementById("hint_username2").innerHTML = xhr.responseText;
+					}
+				}
+			}
+			xhr.open("GET","${pageContext.request.contextPath}/regist_checkUserName.action?time="+new Date().getTime()+"&username="+username,true);
+			xhr.send(null);
+			
+		}
+		function createXmlHttp(){
+			var xmlHttp;
+			try{
+				xmlHttp = new XMLHttpRequest();
+			}
+			catch(e){
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}
+				catch(e){
+					try{
+						xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					catch(e){}
+				}
+			}
+			return xmlHttp;
 		}
 	</Script>
   </head>
@@ -65,8 +96,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	<table>
 		    	<tr>
 		    		<td><font>用户名：</font></td> 
-		    		<td><input id="username" name="username" type="text" onblur="checkUserName"></td>
+		    		<td><input id="username" name="username" type="text" onblur="checkUserName()"></td>
 		    		<td><font id="hint_username" color="red"></font>
+		    		<span id="hint_username2"></span>
+		    		</td>
 		    	</tr>
 		    	<tr>
 		    		<td><font>密码：</font></td>

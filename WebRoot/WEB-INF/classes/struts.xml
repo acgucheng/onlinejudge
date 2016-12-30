@@ -14,5 +14,8 @@
 		<action name="student_regist" class="cn.acgucheng.onlinejudge.action.RegistAction" method="regist">
 			<result name="success">/index.jsp</result>
 		</action>
+		<action name="regist_checkUserName" class="cn.acgucheng.onlinejudge.action.RegistAction" method="CheckUserName">
+			<result name="fuck">/index.jsp</result>
+		</action>
 	</package>
 </struts>    

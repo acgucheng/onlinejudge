@@ -11,6 +11,7 @@ public class RedirectAction extends ActionSupport{
 	}
 	
 	public String registRedirect(){
+		System.out.println("redirect to registPage!!!");
 		return "registPage";
 	}
 	
