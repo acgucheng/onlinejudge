@@ -24,14 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <font size="12px" color="">学生登录</font>
+    <font size="8px" color="">学生登录</font>
     <div>
 	    <form action="student_login" method="post">
 	    	
 	    	<div>用户名：</div>
 	    	<div><input id="username" name="username" type="text"/></div>
 	    	<div>密码：</div>
-	    	<div><input id="password" name="password" type="text"/></div>
+	    	<div><input id="password" name="password" type="password"/></div>
 	    	<div>
 	    		<font size="1px" color="red"><s:property value="hint" /></font>
 	    	</div>

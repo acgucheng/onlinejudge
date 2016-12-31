@@ -30,5 +30,8 @@
 			<result name="login_success" type="redirect">/index</result>
 			<result name="login">/login.jsp</result>
 		</action>
+		<action name="logout" class="cn.acgucheng.onlinejudge.action.LoginAction" method="studentLogout">
+			<result name="index_page" type="redirect">/index</result>
+		</action>
 	</package>
 </struts>    

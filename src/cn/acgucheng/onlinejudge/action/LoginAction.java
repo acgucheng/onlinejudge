@@ -3,6 +3,7 @@ package cn.acgucheng.onlinejudge.action;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -57,12 +58,20 @@ public class LoginAction extends ActionSupport{
 		StudentService studentService = new StudentService();
 		Student student = studentService.checkIdentity(username, password);
 		if(student!=null){
+			HttpSession session = ServletActionContext.getRequest().getSession();
+			session.setAttribute("Student", student);
 			return "login_success";
 		}
 		else{
-			hint="fuck you";
+			hint="您输入的用户名或密码有误！";
 			this.addActionError("用户名或密码不正确，请查证后输入!");
 			return LOGIN;
 		}
+	}
+	
+	public String studentLogout(){
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.removeAttribute("Student");
+		return "index_page";
 	}
 }
