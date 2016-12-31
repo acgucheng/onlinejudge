@@ -10,10 +10,26 @@ public class StudentService {
 		StudentDAO studentdao = new StudentDAO();
 		
 		List studentList = studentdao.findByUsername(name);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 		if(studentList.size()>0){
 			return (Student) studentList.get(0);
 		}
 		return null;
 	}
+	
+	public void insertData(Student student){
+		StudentDAO studentDao = new StudentDAO();
+		studentDao.save(student);
+	}
+	
+	public Student checkIdentity(String username,String password){
+		StudentDAO studentdao = new StudentDAO();
+		List studentList = studentdao.findByUsernameAndPassword(username, password);
+		if(studentList.size()>0){
+			return (Student) studentList.get(0);
+		}
+		else{
+			return null;
+		}
+	}
+	
 }

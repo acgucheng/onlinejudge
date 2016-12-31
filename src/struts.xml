@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+ 
 	<package name="redirect" extends="struts-default" namespace="/">
 		<action name="index" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="indexRedirect">
 			<result name="indexPage">/index.jsp</result>
@@ -8,14 +9,26 @@
 		<action name="regist" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="registRedirect">
 			<result name="registPage">/regist.jsp</result>
 		</action>
+		<action name="login" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="loginRedirect">
+			<result name="loginPage">/login.jsp</result>
+		</action>
 	</package>
 	
+	
 	<package name="regist" extends="struts-default" namespace="/">
-		<action name="student_regist" class="cn.acgucheng.onlinejudge.action.RegistAction" method="regist">
-			<result name="success">/index.jsp</result>
+		<action name="student_regist" class="cn.acgucheng.onlinejudge.action.RegistAction" method="registStudent">
+			<result name="regist_success">/regist_success.jsp</result>
+			<result name="regist_fail">/regist_fail.jsp</result>
 		</action>
 		<action name="regist_checkUserName" class="cn.acgucheng.onlinejudge.action.RegistAction" method="CheckUserName">
 			<result name="fuck">/index.jsp</result>
+		</action>
+	</package>
+	 
+	<package name="login" extends="struts-default" namespace="/">
+		<action name="student_login" class="cn.acgucheng.onlinejudge.action.LoginAction" method="studentLogin">
+			<result name="login_success" type="redirect">/index</result>
+			<result name="login">/login.jsp</result>
 		</action>
 	</package>
 </struts>    

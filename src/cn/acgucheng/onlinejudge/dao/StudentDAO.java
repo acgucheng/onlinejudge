@@ -95,12 +95,31 @@ public class StudentDAO extends BaseHibernateDAO {
 			queryObject.setParameter(0, value);
 			return queryObject.list();
 		} catch (RuntimeException re) {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
+	public List findByProperty(String propertyName1, Object value1,String propertyName2, Object Value2) {
+		log.debug("finding Student instance with property: " + propertyName1
+				+ ", value: " + value1);
+		try {
+			String queryString = "from Student as model where model."
+					+ propertyName1 + "= ? and " + propertyName2 + "= ?";
+			Query queryObject = getSession().createQuery(queryString);
+			queryObject.setParameter(0, value1);
+			queryObject.setParameter(1, Value2);
+			return queryObject.list();
+		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;
 		}
 	}
 
+	public List findByUsernameAndPassword(Object username,Object password){
+		return findByProperty(USERNAME,username,PASSWORD,password);
+	}
+	
 	public List findByUsername(Object username) {
 		return findByProperty(USERNAME, username);
 	}

@@ -58,7 +58,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			xhr.onreadystatechange = function(){
 				if(xhr.readyState == 4){
 					if(xhr.status == 200){
-						alert("fuck");
 						document.getElementById("hint_username2").innerHTML = xhr.responseText;
 					}
 				}
@@ -117,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	</tr>
 		    	<tr>
 		    		<td><font>班级:</font></td>
-		    		<td><input id="class" name="class" type="text"></td>
+		    		<td><input id="class" name="classno" type="text"></td>
 		    	</tr>
 		    	<tr>
 		    		<td colspan="2"><font id="hint" size="1px" color="red"></font></td>

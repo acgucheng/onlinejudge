@@ -1,11 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'menu.jsp' starting page</title>
+    <title>My JSP 'regist_fail.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,9 +23,7 @@
   </head>
   
   <body>
-  	<div>
-  		<a href="login">登录</a>
-  		<a href="regist" align="right">注册</a>
-  	</div>
+    您输入的信息有误！请查证后重新输入！<br>
+    <a href="javascript:history.go(-1);">点击此处返回完善信息</a>
   </body>
 </html>
