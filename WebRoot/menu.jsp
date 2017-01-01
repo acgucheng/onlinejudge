@@ -22,11 +22,20 @@
   <body>
 	  <div>
 	  	<s:if test="#session.Student == null">
-		  		<a href="login">登录</a>
-		  		<a href="regist" align="right">注册</a>
+	  			<s:if test="#session.Teacher == null">
+			  		<a href="login">登录</a>
+			  		<a href="regist" align="right">注册</a>
+		  		</s:if>
+		  		<s:else>
+		  			<font>欢迎您，老师</font>
+		  			<s:property value="#session.Teacher.name"/>
+		  			<a href="${pageContext.request.contextPath }/index">个人设置</a>
+		  			<a href="${pageContext.request.contextPath }/logout">退出</a>
+		  		</s:else>
 	  	</s:if>
 	  	<s:else>
-	  		<s:property value="#session.Student.name"/>
+	  		<s:property value="#session.Student.class"/>
+	  		<s:property value="#session.Student.name"/>|
 	  		<a href="${pageContext.request.contextPath }/index">个人设置</a>
 	  		<a href="${pageContext.request.contextPath }/logout">退出</a>
 	  	</s:else>

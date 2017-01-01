@@ -78,6 +78,9 @@ public class TeacherDAO extends BaseHibernateDAO {
 		}
 	}
 
+	public List findByUsernameAndPassword(String username,String password){
+		return findByProperty(USERNAME,username,PASSWORD,password);
+	}
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding Teacher instance with property: " + propertyName
 				+ ", value: " + value);
@@ -86,6 +89,22 @@ public class TeacherDAO extends BaseHibernateDAO {
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
+	public List findByProperty(String propertyName1, Object value1,String propertyName2,Object value2) {
+		log.debug("finding Teacher instance with property: " + propertyName1
+				+ ", value: " + value1);
+		try {
+			String queryString = "from Teacher as model where model."
+					+ propertyName1 + "= ?" + " and " + propertyName2 + "= ?";
+			Query queryObject = getSession().createQuery(queryString);
+			queryObject.setParameter(0, value1);
+			queryObject.setParameter(1, value2);
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);

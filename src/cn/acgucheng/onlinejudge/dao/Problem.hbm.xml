@@ -31,5 +31,8 @@
             </key>
             <one-to-many class="cn.acgucheng.onlinejudge.entity.ExamProblem" />
         </set>
+        <property name="title" type="java.lang.String">
+            <column name="title" length="50" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

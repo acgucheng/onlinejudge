@@ -29,4 +29,8 @@ public class RedirectAction extends ActionSupport{
 	public String loginRedirect(){
 		return "loginPage";
 	}
+	
+	public String teacherLoginRedirect(){
+		return "teacherLoginPage";
+	}
 }

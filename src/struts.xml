@@ -12,6 +12,9 @@
 		<action name="login" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="loginRedirect">
 			<result name="loginPage">/login.jsp</result>
 		</action>
+		<action name="teacherLogin" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="teacherLoginRedirect">
+			<result name="teacherLoginPage">/teacher_login.jsp</result>
+		</action>
 	</package>
 	
 	
@@ -30,8 +33,17 @@
 			<result name="login_success" type="redirect">/index</result>
 			<result name="login">/login.jsp</result>
 		</action>
-		<action name="logout" class="cn.acgucheng.onlinejudge.action.LoginAction" method="studentLogout">
+		<action name="logout" class="cn.acgucheng.onlinejudge.action.LoginAction" method="Logout">
 			<result name="index_page" type="redirect">/index</result>
+		</action>
+		<action name="teacher_login" class="cn.acgucheng.onlinejudge.action.LoginAction" method="teacherLogin">
+			<result name="login_success" type="redirect">/index</result>
+			<result name="login_fail">/teacher_login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="add_problem" extends="struts-default" namespace="/">
+		<action name="add_problem" class="cn.acgucheng.onlinejudge.action.AddProblemAction" method="addProblem">
 		</action>
 	</package>
 </struts>    

@@ -3,13 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>在线考试系统</title>
+    <title>My JSP 'teacher_login.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,13 +19,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
-  <%@include file="menu.jsp" %>
-  
   <body>
-    This is my JSP page. <br>
-    <a href="${pageContext.request.contextPath }/teacherLogin">老师登录</a>
-    <a href="${pageContext.request.contextPath }/teacher/add_problem.jsp">添加题目</a>
+    <font size="8px" color="">老师登录</font>
+    <div>
+	    <form action="teacher_login" method="post">
+	    	
+	    	<div>用户名：</div>
+	    	<div><input id="username" name="username" type="text"/></div>
+	    	<div>密码：</div>
+	    	<div><input id="password" name="password" type="password"/></div>
+	    	<div>
+	    		<font size="1px" color="red"><s:property value="hint" /></font>
+	    	</div>
+	    	<input type="submit" value="登录"/>
+	    	
+	    </form>
+    </div>
   </body>
 </html>

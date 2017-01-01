@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import cn.acgucheng.onlinejudge.entity.Student;
+import cn.acgucheng.onlinejudge.entity.Teacher;
 import cn.acgucheng.onlinejudge.service.StudentService;
+import cn.acgucheng.onlinejudge.service.TeacherService;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -69,9 +71,25 @@ public class LoginAction extends ActionSupport{
 		}
 	}
 	
-	public String studentLogout(){
+	public String Logout(){
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.removeAttribute("Student");
+		session.removeAttribute("Teacher");
 		return "index_page";
 	}
+	
+	public String teacherLogin(){
+		TeacherService teacherService = new TeacherService();
+		Teacher teacher = teacherService.checkIdentity(username, password);
+		if(teacher!=null){
+			HttpSession session = ServletActionContext.getRequest().getSession();
+			session.setAttribute("Teacher", teacher);
+			return "login_success";
+		}
+		else{
+			hint = "用户名或密码错误，请重新输入！";
+			return "login_fail";
+		}
+	}
+	
 }

@@ -17,6 +17,7 @@ public class Problem implements java.io.Serializable {
 	private String description;
 	private String selection;
 	private String answer;
+	private String title;
 	private Set examProblems = new HashSet(0);
 
 	// Constructors
@@ -27,12 +28,13 @@ public class Problem implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Problem(Teacher teacher, Integer type, String description,
-			String selection, String answer) {
+			String selection, String answer,String title) {
 		this.teacher = teacher;
 		this.type = type;
 		this.description = description;
 		this.selection = selection;
 		this.answer = answer;
+		this.title = title;
 	}
 
 	/** full constructor */
@@ -103,5 +105,14 @@ public class Problem implements java.io.Serializable {
 	public void setExamProblems(Set examProblems) {
 		this.examProblems = examProblems;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 
 }

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,13 +30,19 @@ public class ProblemDAO extends BaseHibernateDAO {
 	public static final String DESCRIPTION = "description";
 	public static final String SELECTION = "selection";
 	public static final String ANSWER = "answer";
+	public static final String TITLE = "title";
 
 	public void save(Problem transientInstance) {
 		log.debug("saving Problem instance");
+		Transaction trans= getSession().beginTransaction();
 		try {
 			getSession().save(transientInstance);
+			getSession().flush();
+			getSession().close();
+			trans.commit();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
+			trans.rollback();
 			log.error("save failed", re);
 			throw re;
 		}
@@ -63,6 +70,7 @@ public class ProblemDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
 
 	public List findByExample(Problem instance) {
 		log.debug("finding Problem instance by example");
