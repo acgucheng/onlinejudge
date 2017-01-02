@@ -15,12 +15,21 @@
 		<action name="teacherLogin" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="teacherLoginRedirect">
 			<result name="teacherLoginPage">/teacher_login.jsp</result>
 		</action>
+		<action name="check_exam" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="checkExamRedirect">
+			<result name="checkExamPage">/check_exam.jsp</result>
+		</action>
 		
 	</package>
 	
 	<package name="teacher_redirect" extends="struts-default" namespace="/teacher">
 		<action name="problem_database" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="problemDatabaseRedirect">
 			<result name="problemDatabasePage">/teacher/problem_database.jsp</result>
+		</action>
+		<action name="create_exam" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="createExamRedirect">
+			<result name="createExamPage">/teacher/create_exam.jsp</result>
+		</action>
+		<action name="edit_exam" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="editExamRedirect">
+			<result name="editExamPage">/teacher/edit_exam.jsp</result>
 		</action>
 	</package>
 	
@@ -57,6 +66,14 @@
 		<action name="problem_detail" class="cn.acgucheng.onlinejudge.action.ProblemDetailAction" method="checkProblemDetail">
 			<result name="checkProblemDetail">/teacher/problem_detail.jsp</result>
 		</action>
+	</package>
+	
+	<package name="exam" extends="struts-default" namespace="/teacher">
+		<action name="create_exam_action" class="cn.acgucheng.onlinejudge.action.CreateExamAction" method="createExam">
+			<result name="fail">/teacher/create_exam.jsp</result>
+			<result name="success" type="redirect">/index</result>
+		</action>
+		
 	</package>
 	
 </struts>    

@@ -8,6 +8,7 @@ import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cn.acgucheng.onlinejudge.entity.Exam;
 import cn.acgucheng.onlinejudge.entity.ExamProblem;
 
 /**
@@ -26,6 +27,7 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 			.getLogger(ExamProblemDAO.class);
 	// property constants
 	public static final String VALUE = "value";
+	public static final String EXAM = "id.exam";
 
 	public void save(ExamProblem transientInstance) {
 		log.debug("saving ExamProblem instance");
@@ -75,7 +77,13 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-
+	
+	public List findByExamID(Integer examID){
+		ExamDAO examDao = new ExamDAO();
+		Exam exam = examDao.findById(examID);
+		return findByProperty(EXAM,exam);
+	}
+	
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding ExamProblem instance with property: " + propertyName
 				+ ", value: " + value);

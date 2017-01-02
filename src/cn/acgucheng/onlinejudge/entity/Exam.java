@@ -21,9 +21,25 @@ public class Exam implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
-	public Exam() {
+	public Exam(){
+		super();
 	}
+	
+	public Exam(Exam exam){
+		this.id = exam.getId();
+		this.teacher = exam.getTeacher();
+		this.name = exam.getName();
+		this.status = exam.getStatus();
+		this.timeLimit = exam.getTimeLimit();
+		this.examProblems = exam.getExamProblems();
+		this.studentExams = exam.getStudentExams();
+	}
+	
+	/** default constructor 
+	 * @param timeLimit2 
+	 * @param b 
+	 * @param name2 
+	 * @param teacher2 */
 
 	/** minimal constructor */
 	public Exam(Teacher teacher, String name, Integer timeLimit) {

@@ -3,13 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@include file="/menu.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>在线考试系统</title>
+    <title>My JSP 'create_exam.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,16 +19,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
-  <%@include file="menu.jsp" %>
-  
   <body>
-    This is my JSP page. <br>
-    <a href="${pageContext.request.contextPath }/teacherLogin">老师登录</a>
-    <a href="${pageContext.request.contextPath }/teacher/add_problem.jsp">添加题目</a>
-    <a href="${pageContext.request.contextPath }/teacher/problem_database">查看题库</a>
-    <a href="${pageContext.request.contextPath }/teacher/create_exam">创建考试</a>
-    <a href="${pageContext.request.contextPath }/check_exam">查看考试</a>
+    <font>添加考试</font>
+    <form action="${pageContext.request.contextPath }/teacher/create_exam_action" method="post">
+    	<div>考试名：</div>
+    	<div><input type="text" name="name"/></div>
+    	<div>时间限制：</div>
+    	<div><input type="text" name="timeLimit"/></div>
+    	<div><input type="submit" value="提交"/></div>
+    </form>
+    
   </body>
 </html>
