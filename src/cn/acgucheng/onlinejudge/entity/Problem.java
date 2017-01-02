@@ -11,14 +11,14 @@ public class Problem implements java.io.Serializable {
 
 	// Fields
 
-	private Integer id;
-	private Teacher teacher;
-	private Integer type;
-	private String description;
-	private String selection;
-	private String answer;
-	private String title;
-	private Set examProblems = new HashSet(0);
+	protected Integer id;
+	protected Teacher teacher;
+	protected Integer type;
+	protected String description;
+	protected String selection;
+	protected String answer;
+	protected String title;
+	protected Set examProblems = new HashSet(0);
 
 	// Constructors
 
@@ -114,5 +114,8 @@ public class Problem implements java.io.Serializable {
 		this.title = title;
 	}
 	
+	public void display(){
+		
+	}
 
 }

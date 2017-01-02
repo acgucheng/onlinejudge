@@ -15,4 +15,9 @@ public class TeacherService {
 		else
 			return null;
 	}
+	
+	public Teacher findByID(Integer id){
+		TeacherDAO teacherDao = new TeacherDAO();
+		return teacherDao.findById(id);
+	}
 }

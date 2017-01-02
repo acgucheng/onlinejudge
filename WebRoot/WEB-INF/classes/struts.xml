@@ -15,8 +15,14 @@
 		<action name="teacherLogin" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="teacherLoginRedirect">
 			<result name="teacherLoginPage">/teacher_login.jsp</result>
 		</action>
+		
 	</package>
 	
+	<package name="teacher_redirect" extends="struts-default" namespace="/teacher">
+		<action name="problem_database" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="problemDatabaseRedirect">
+			<result name="problemDatabasePage">/teacher/problem_database.jsp</result>
+		</action>
+	</package>
 	
 	<package name="regist" extends="struts-default" namespace="/">
 		<action name="student_regist" class="cn.acgucheng.onlinejudge.action.RegistAction" method="registStudent">
@@ -46,4 +52,11 @@
 		<action name="add_problem" class="cn.acgucheng.onlinejudge.action.AddProblemAction" method="addProblem">
 		</action>
 	</package>
+	
+	<package name="problem" extends="struts-default" namespace="/teacher">
+		<action name="problem_detail" class="cn.acgucheng.onlinejudge.action.ProblemDetailAction" method="checkProblemDetail">
+			<result name="checkProblemDetail">/teacher/problem_detail.jsp</result>
+		</action>
+	</package>
+	
 </struts>    

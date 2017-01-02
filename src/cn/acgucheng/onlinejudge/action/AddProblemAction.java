@@ -2,12 +2,15 @@ package cn.acgucheng.onlinejudge.action;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import javax.swing.SingleSelectionModel;
 
 import org.apache.struts2.ServletActionContext;
 
 import cn.acgucheng.onlinejudge.entity.Problem;
 import cn.acgucheng.onlinejudge.entity.Teacher;
 import cn.acgucheng.onlinejudge.service.ProblemService;
+import cn.acgucheng.onlinejudge.utils.BaseProblem;
+import cn.acgucheng.onlinejudge.utils.SingleSelectProblem;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,7 +27,10 @@ public class AddProblemAction extends ActionSupport{
 		System.out.println(teacher.getId());
 		Problem problem = new Problem(teacher, type, description, selection, answer, title);
 		ProblemService ps = new ProblemService();
+		BaseProblem bp = new SingleSelectProblem(problem);
+		bp.display();
 		ps.insertData(problem);
+		
 		return NONE;
 	}
 	
