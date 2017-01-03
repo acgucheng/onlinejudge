@@ -31,6 +31,9 @@
 		<action name="edit_exam" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="editExamRedirect">
 			<result name="editExamPage">/teacher/edit_exam.jsp</result>
 		</action>
+		<action name="check_score" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="checkScoreRedirect">
+			<result name="checkScorePage">/teacher/check_score.jsp</result>
+		</action>
 	</package>
 	
 	<package name="student_redirect" extends="struts-default" namespace="/student">
@@ -84,6 +87,9 @@
 		</action>
 		<action name="delete_problem_from_exam" class="cn.acgucheng.onlinejudge.action.EditExamAction" method="deleteProblemFromExam">
 			<result name="success" type="redirect">/teacher/edit_exam?examID=${examID}</result>
+		</action>
+		<action name="exam_score" class="cn.acgucheng.onlinejudge.action.CheckScoreAction" method="examScore">
+			<result name="success">/teacher/exam_score.jsp</result>
 		</action>
 	</package>
 	

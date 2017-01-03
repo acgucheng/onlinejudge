@@ -34,7 +34,7 @@
 		  		</s:else>
 	  	</s:if>
 	  	<s:else>
-	  		<s:property value="#session.Student.class"/>
+	  		<s:property value="#session.Student.class_"/>
 	  		<s:property value="#session.Student.name"/>|
 	  		<a href="${pageContext.request.contextPath }/index">个人设置</a>
 	  		<a href="${pageContext.request.contextPath }/logout">退出</a>

@@ -32,4 +32,9 @@ public class StudentService {
 		}
 	}
 	
+	public Student findByID(Integer id){
+		StudentDAO sd = new StudentDAO();
+		return sd.findById(id);
+	}
+	
 }

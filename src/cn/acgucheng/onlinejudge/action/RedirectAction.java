@@ -111,4 +111,12 @@ public class RedirectAction extends ActionSupport{
 		return "joinExamPage";
 	}
 	
+	public String checkScoreRedirect(){
+		ExamService es = new ExamService();
+		List exams = es.findAll();
+		ActionContext.getContext().getValueStack().set("Exams", exams);
+		return "checkScorePage";
+	}
+	
+	
 }
