@@ -186,4 +186,28 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+
+	public List findByExamIDAndProblemID(Integer examID,Integer problemID) {
+		// TODO Auto-generated method stub
+		return findByProperty(EXAMID,examID, PROBLEMID,problemID);
+	}
+	
+	public List findByProperty(String propertyName1, Object value1,String propertyName2,Object value2) {
+		Transaction trans = getSession().beginTransaction();
+		log.debug("finding ExamProblem instance with property: " + propertyName1
+				+ ", value: " + value1 + " and " + propertyName2 + "value2");
+		try {
+			String queryString = "from ExamProblem as model where model."
+					+ propertyName1 + "= ?" + " and " + propertyName2 + "= ?";
+			Query queryObject = getSession().createQuery(queryString);
+			queryObject.setParameter(0, value1);
+			queryObject.setParameter(1, value2);
+			trans.commit();
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			//trans.rollback();
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
 }

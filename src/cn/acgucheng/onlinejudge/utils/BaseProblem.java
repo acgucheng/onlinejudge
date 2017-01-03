@@ -4,7 +4,7 @@ import cn.acgucheng.onlinejudge.entity.Problem;
 import cn.acgucheng.onlinejudge.entity.Teacher;
 import cn.acgucheng.onlinejudge.service.TeacherService;
 
-public class BaseProblem {
+abstract public class BaseProblem {
 	protected Integer id;
 	protected Teacher teacher;
 	protected Integer type;
@@ -69,4 +69,5 @@ public class BaseProblem {
 	public void display(){
 		
 	}
+	abstract public double checkAnswer(String examID,String answer);
 }

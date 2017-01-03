@@ -37,7 +37,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<td><s:property value="#p.id"/></td>
     				<td><s:property value="#p.name"/></td>
     				<td><s:property value="#p.teacher.name"/></td>
-    				<td><a href="${pageContext.request.contextPath }/teacher/edit_exam?examID=<s:property value="#p.id"/>">详情</a></td>
+ 					<s:if test="#session.Teacher!=null">
+    					<td><a href="${pageContext.request.contextPath }/teacher/edit_exam?examID=<s:property value="#p.id"/>">详情</a></td>
+    				</s:if>
+    				<s:else>
+    					<td><a href="${pageContext.request.contextPath }/student/join_exam?examID=<s:property value="#p.id"/>">参加</a></td>
+    				</s:else>
     			</tr>
     		</s:iterator>
     	</table>

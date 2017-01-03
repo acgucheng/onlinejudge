@@ -31,4 +31,10 @@ public class ExamProblemService {
 		epd.deleteByID(examID,problemID);
 	}
 	
+	public double getValueByExamIDAndProblemID(Integer examID,Integer problemID){
+		List<ExamProblem> exam_problems = epd.findByExamIDAndProblemID(examID,problemID);
+		return exam_problems.get(0).getValue();
+	}
+	
+	
 }

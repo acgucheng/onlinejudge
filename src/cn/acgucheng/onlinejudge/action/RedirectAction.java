@@ -94,4 +94,21 @@ public class RedirectAction extends ActionSupport{
 		return "checkExamPage";
 	}
 	
+	public String joinExamRedirect(){
+		ExamProblemService eps = new ExamProblemService();
+		List problemList = eps.getProblemsByExamID(Integer.parseInt(examID));
+		ActionContext.getContext().getValueStack().set("examID",examID);
+		List<BaseProblem> problems = new ArrayList<BaseProblem>();
+		for(int i = 0; i < problemList.size(); i++){
+			Problem problem =  (Problem) problemList.get(i);
+			if(problem.getType() == 0)
+				problems.add(new SingleSelectProblem(problem));
+		}
+		for(int i = 0; i < problems.size(); i++){
+			problems.get(i).display();
+		}
+		ActionContext.getContext().getValueStack().set("ExamProblems", problems);
+		return "joinExamPage";
+	}
+	
 }

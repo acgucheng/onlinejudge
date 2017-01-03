@@ -33,6 +33,12 @@
 		</action>
 	</package>
 	
+	<package name="student_redirect" extends="struts-default" namespace="/student">
+		<action name="join_exam" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="joinExamRedirect">
+			<result name="joinExamPage">/student/join_exam.jsp</result>
+		</action>
+	</package>
+	
 	<package name="regist" extends="struts-default" namespace="/">
 		<action name="student_regist" class="cn.acgucheng.onlinejudge.action.RegistAction" method="registStudent">
 			<result name="regist_success">/regist_success.jsp</result>
@@ -81,4 +87,9 @@
 		</action>
 	</package>
 	
+	<package name="student" extends="struts-default" namespace="/student">
+		<action name="submit_answer" class="cn.acgucheng.onlinejudge.action.SubmitAnswerAction" method="submitAnswer">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+	</package>
 </struts>    
