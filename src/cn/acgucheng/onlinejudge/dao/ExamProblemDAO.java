@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,10 +32,15 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 
 	public void save(ExamProblem transientInstance) {
 		log.debug("saving ExamProblem instance");
+		Transaction trans = getSession().beginTransaction();
 		try {
 			getSession().save(transientInstance);
+			getSession().flush();
+			getSession().close();
+			trans.commit();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
+			trans.rollback();
 			log.error("save failed", re);
 			throw re;
 		}
@@ -85,6 +91,8 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 	}
 	
 	public List findByProperty(String propertyName, Object value) {
+		getSession().clear();
+		Transaction trans = getSession().beginTransaction();
 		log.debug("finding ExamProblem instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -92,8 +100,10 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
+			trans.commit();
 			return queryObject.list();
 		} catch (RuntimeException re) {
+			trans.rollback();
 			log.error("find by property name failed", re);
 			throw re;
 		}

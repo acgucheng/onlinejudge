@@ -73,7 +73,9 @@
 			<result name="fail">/teacher/create_exam.jsp</result>
 			<result name="success" type="redirect">/index</result>
 		</action>
-		
+		<action name="add_problem_to_exam" class="cn.acgucheng.onlinejudge.action.EditExamAction" method="addProblemToExam">
+			<result name="success" type="redirect">/teacher/edit_exam?examID=${examID}</result>
+		</action>
 	</package>
 	
 </struts>    

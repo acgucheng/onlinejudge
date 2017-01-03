@@ -6,7 +6,7 @@
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'menu.jsp' starting page</title>
+    <title>在线考试系统</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

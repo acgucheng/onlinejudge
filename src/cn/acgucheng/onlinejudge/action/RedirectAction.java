@@ -72,6 +72,7 @@ public class RedirectAction extends ActionSupport{
 		//Exam exam = (Exam) ActionContext.getContext().getValueStack().findValue("Exam");
 		ExamProblemService eps = new ExamProblemService();
 		List problemList = eps.getProblemsByExamID(Integer.parseInt(examID));
+		ActionContext.getContext().getValueStack().set("examID",examID);
 		List<BaseProblem> problems = new ArrayList<BaseProblem>();
 		for(int i = 0; i < problemList.size(); i++){
 			Problem problem =  (Problem) problemList.get(i);

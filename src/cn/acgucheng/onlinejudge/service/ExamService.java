@@ -16,4 +16,9 @@ public class ExamService {
 		return examDao.findAll();
 	}
 	
+	public Exam findByID(Integer id){
+		return examDao.findById(id);
+	}
+	
+	
 }

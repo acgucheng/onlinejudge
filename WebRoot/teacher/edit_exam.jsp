@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@include file="/menu.jsp" %>
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -27,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div>当前已有试题:</div>
     <div>
     <table>
-	    <s:iterator var="p" value="exam_problem">
+	    <s:iterator var="p" value="ExamProblems">
 	    	<tr>
 			   	<td><s:property value="#p.id"/></td>
 			   		<td><s:property value="#p.title"/></td>
@@ -44,6 +45,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	<tr>
 	    </s:iterator>
     </table>
+    <div>
+    	<form action="${pageContext.request.contextPath }/teacher/add_problem_to_exam" method="post">
+    		<input name="examID" type="hidden" value="<s:property value="examID"/>">
+    		<div>题目编号：</div>
+    		<div><input name="problemID" type="text"/></div>
+    		<div>分值：</div>
+    		<div><input name="value" type="text"/></div>	
+    		<div><input type="submit" value="添加"/></div>
+    		
+    	</form>
+    	<div></div>
+    </div>
     </div>
   </body>
 </html>
