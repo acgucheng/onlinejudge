@@ -14,7 +14,6 @@ public class ExamProblemService {
 	
 	public List getProblemsByExamID(Integer id){
 		List<ExamProblem> exam_problems = epd.findByExamID(id);
-		
 		List<Problem> problems = new ArrayList<Problem>();
 		for(int i = 0; i < exam_problems.size(); i++){
 			problems.add(exam_problems.get(i).getId().getProblem());
@@ -26,6 +25,10 @@ public class ExamProblemService {
 		ExamProblemId epi = new ExamProblemId(exam,problem);
 		ExamProblem ep = new ExamProblem(epi, value);
 		epd.save(ep);
+	}
+	
+	public void deleteByExamProblem(Integer examID,Integer problemID){
+		epd.deleteByID(examID,problemID);
 	}
 	
 }

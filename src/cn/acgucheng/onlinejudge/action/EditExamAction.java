@@ -1,6 +1,7 @@
 package cn.acgucheng.onlinejudge.action;
 
 import cn.acgucheng.onlinejudge.entity.Exam;
+import cn.acgucheng.onlinejudge.entity.ExamProblemId;
 import cn.acgucheng.onlinejudge.entity.Problem;
 import cn.acgucheng.onlinejudge.service.ExamProblemService;
 import cn.acgucheng.onlinejudge.service.ExamService;
@@ -59,5 +60,16 @@ public class EditExamAction extends ActionSupport{
 		}
 		return "success";
 	}
+	
+	public String deleteProblemFromExam(){
+		//ProblemService ps = new ProblemService();
+		//ExamService es = new ExamService();
+		//Exam exam = es.findByID(Integer.parseInt(examID));
+		//Problem problem = ps.findByID(Integer.parseInt(problemID));
+		ExamProblemService eps = new ExamProblemService();
+		eps.deleteByExamProblem(Integer.parseInt(examID),Integer.parseInt(problemID));
+		return "success";
+	}
+	
 
 }

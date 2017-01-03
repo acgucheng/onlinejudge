@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import cn.acgucheng.onlinejudge.entity.Exam;
 import cn.acgucheng.onlinejudge.entity.ExamProblem;
+import cn.acgucheng.onlinejudge.entity.ExamProblemId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -29,6 +30,8 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 	// property constants
 	public static final String VALUE = "value";
 	public static final String EXAM = "id.exam";
+	public static final String PROBLEMID="id.problem.id";
+	public static final String EXAMID="id.exam.id";
 
 	public void save(ExamProblem transientInstance) {
 		log.debug("saving ExamProblem instance");
@@ -108,6 +111,30 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	public void deleteByID(Integer examID,Integer problemID){
+		
+		deleteByProperty(EXAMID,examID,PROBLEMID,problemID);
+		
+	}
+	
+	public void deleteByProperty(String propertyName1, Object value1,String propertyName2,Object value2) {
+		Transaction trans = getSession().beginTransaction();
+		try {
+			String queryString = "delete ExamProblem as model where model."
+					+ propertyName1 + "= ?" + " and " + propertyName2 + "= ?";
+			Query queryObject = getSession().createQuery(queryString);
+			queryObject.setParameter(0, value1);
+			queryObject.setParameter(1, value2);
+			queryObject.executeUpdate();
+			trans.commit();
+		} catch (RuntimeException re) {
+			trans.rollback();
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
 
 	public List findByValue(Object value) {
 		return findByProperty(VALUE, value);

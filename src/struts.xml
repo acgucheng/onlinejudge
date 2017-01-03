@@ -76,6 +76,9 @@
 		<action name="add_problem_to_exam" class="cn.acgucheng.onlinejudge.action.EditExamAction" method="addProblemToExam">
 			<result name="success" type="redirect">/teacher/edit_exam?examID=${examID}</result>
 		</action>
+		<action name="delete_problem_from_exam" class="cn.acgucheng.onlinejudge.action.EditExamAction" method="deleteProblemFromExam">
+			<result name="success" type="redirect">/teacher/edit_exam?examID=${examID}</result>
+		</action>
 	</package>
 	
 </struts>    

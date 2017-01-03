@@ -42,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   		</td>
 			   		<td><s:property value="#p.teacher.name"/></td>
 			   		<td><a href="${pageContext.request.contextPath }/teacher/problem_detail?problemID=<s:property value="#p.id"/>">详情</a></td>
+	    			<td><a href="${pageContext.request.contextPath }/teacher/delete_problem_from_exam?problemID=<s:property value="#p.id"/>&examID=<s:property value="examID"/>">删除</a>
 	    	<tr>
 	    </s:iterator>
     </table>
