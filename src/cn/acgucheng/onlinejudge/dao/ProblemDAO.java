@@ -120,9 +120,12 @@ public class ProblemDAO extends BaseHibernateDAO {
 
 	public List findAll() {
 		log.debug("finding all Problem instances");
+		Transaction trans = getSession().beginTransaction();
 		try {
 			String queryString = "from Problem";
 			Query queryObject = getSession().createQuery(queryString);
+			getSession().flush();
+			trans.commit();
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);

@@ -200,6 +200,7 @@ public class ExamProblemDAO extends BaseHibernateDAO {
 			String queryString = "from ExamProblem as model where model."
 					+ propertyName1 + "= ?" + " and " + propertyName2 + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
+			getSession().flush();
 			queryObject.setParameter(0, value1);
 			queryObject.setParameter(1, value2);
 			trans.commit();

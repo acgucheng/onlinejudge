@@ -75,12 +75,18 @@ public class LoginAction extends ActionSupport{
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.removeAttribute("Student");
 		session.removeAttribute("Teacher");
+		session.removeAttribute("Admin");
 		return "index_page";
 	}
 	
 	public String teacherLogin(){
+		
 		TeacherService teacherService = new TeacherService();
 		Teacher teacher = teacherService.checkIdentity(username, password);
+		if(username.equals("admin")&&password.equals("123456")){
+			HttpSession session = ServletActionContext.getRequest().getSession();
+			session.setAttribute("Admin", "hello");
+		}
 		if(teacher!=null){
 			HttpSession session = ServletActionContext.getRequest().getSession();
 			session.setAttribute("Teacher", teacher);

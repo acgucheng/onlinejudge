@@ -22,27 +22,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <style>
+  	.padding-panel{
+  		padding:20px;
+  		margin:20px;
+  	}
+  	.padding-selection{
+  		padding:10px;
+  		margin:10px;
+  	}
+  </style>
   <body>
-    <div>欢迎使用常州大学在线考试系统</div>
+    <div><h1 class="text-center page-header">欢迎使用常州大学在线考试系统</h1></div>
     <form action="${pageContext.request.contextPath }/student/submit_answer" method="post">
     	<input type="hidden" name="examID" value="<s:property value="examID"/>"/>
-	    <s:iterator var="p" value="ExamProblems">
-	    	<div><s:property value="#p.description"/></div>
+		<s:iterator var="p" value="ExamProblems">
+    	<div class="panel panel-default padding-panel">
+	    	<div><font size="4px"><s:property value="#p.description"/></font></div>
 	    	<s:if test="#p.type==0">
 	    		<div>
 	    			<%int a=0; %>
+	    			<div class="padding-selection">
 	    			<s:iterator var="i" value="#p.selections">
-	    				<input type="radio" value="<%=a%>" name="<s:property value="#p.id"/>"><s:property value="#i"/><br>
+	    				<input type="radio" value="<%=a%>" name="<s:property value="#p.id"/>"><font size="4px"><s:property value="#i"/></font><br>
 	    				<%a++; %>
 	    			</s:iterator>
+	    			</div>
 	    		</div>
 	    	</s:if>
 	    	<s:else>
 	    		fuck!!
 	    	</s:else>
-	    </s:iterator>
-	    <input type="submit" value="提交"/>
+    	</div>
+		</s:iterator>
+	    <div class="text-center"><input class="btn btn-success btn-lg" type="submit" value="&nbsp&nbsp&nbsp&nbsp提交&nbsp&nbsp&nbsp&nbsp  "/></div>
 	</form>
   </body>
 </html>

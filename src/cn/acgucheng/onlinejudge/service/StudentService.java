@@ -37,4 +37,15 @@ public class StudentService {
 		return sd.findById(id);
 	}
 	
+	public List findAll(){
+		StudentDAO sd = new StudentDAO();
+		return sd.findAll();
+	}
+	
+	public void delete(Student student){
+		StudentDAO sd = new StudentDAO();
+		sd.delete(student);
+	}
+	
+	
 }

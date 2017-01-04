@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="/menu.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html >
   <head>
     <base href="<%=basePath%>">
     
@@ -22,25 +22,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <style>
+  	.padding-body{
+  		padding:10px;
+  		margin:20px;
+  	}
+  	.padding-panel{
+  		
+  		margin:10px;
+  	}
+  </style>
   <body>
-    <font>问题详情</font><br>
-    <div>题目：</div>
-    <div><s:property value="problem.title"/></div>
-    <div>问题描述：</div>
-    <div><s:property value="problem.description"/></div>
-    <div>选项：</div>
-    <div>
-    	<%char a='A'; %>
-    	<s:iterator var="p" value="problem.selections">
-    		<%=a %>.<s:property value="#p"/>
-    		<br>
-    		<%a++; %>
-    	</s:iterator>
-    </div>
-    <div>答案：</div>
-    <s:property value="problem.answer"/>
-    <div>出题人：</div>
-    <s:property value="problem.teacher.name"/>
+  	  <h1 class="text-center page-header"><s:property value="problem.title"/></h1>
+	  <div class="padding-body">
+	  	
+	    <div></div>
+	    <div><font size="6px">问题描述：</font></div>
+	    <div class="panel panel-default padding-panel" >
+	    	<div class="padding-body"><font size="4px" ><s:property value="problem.description"/></font></div>
+	    </div>
+	    <div><font size="6px">选项：</font></div>
+	    <div class="panel panel-default padding-panel">
+	    	<div class="padding-body">
+		    	<font size="4px">
+		    	<%char a='A'; %>
+		    	<s:iterator var="p" value="problem.selections">
+		    		<%=a %>.<s:property value="#p"/>
+		    		<br>
+		    		<%a++; %>
+		    	</s:iterator>
+		    	</font>
+	    	</div>
+	    </div>
+	    <div><font size="6px">答案：</font></div>
+	    <div>
+	    	<div class="panel panel-default padding-panel">
+	    		<div class="padding-body"><font size="4px"><s:property value="problem.answer"/></font></div>
+	    	</div>
+	    </div>
+	    <div><font size="6px">出题人：</font></div>
+	    <div class="panel panel-default padding-panel">
+	    	<div class="padding-body"><s:property value="problem.teacher.name"/></div>
+	    </div>
+	  </div>
   </body>
 </html>

@@ -66,8 +66,9 @@
 		</action>
 	</package>
 	
-	<package name="add_problem" extends="struts-default" namespace="/">
+	<package name="add_problem" extends="struts-default" namespace="/teacher">
 		<action name="add_problem" class="cn.acgucheng.onlinejudge.action.AddProblemAction" method="addProblem">
+			<result name="success">/teacher/add_problem</result>
 		</action>
 	</package>
 	
@@ -80,7 +81,7 @@
 	<package name="exam" extends="struts-default" namespace="/teacher">
 		<action name="create_exam_action" class="cn.acgucheng.onlinejudge.action.CreateExamAction" method="createExam">
 			<result name="fail">/teacher/create_exam.jsp</result>
-			<result name="success" type="redirect">/index</result>
+			<result name="success" type="redirect">/check_exam</result>
 		</action>
 		<action name="add_problem_to_exam" class="cn.acgucheng.onlinejudge.action.EditExamAction" method="addProblemToExam">
 			<result name="success" type="redirect">/teacher/edit_exam?examID=${examID}</result>
@@ -98,4 +99,20 @@
 			<result name="success" type="redirect">/index.jsp</result>
 		</action>
 	</package>
+	
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<action name="student_manage" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="studentManageRedirect">
+			<result name="success">/admin/student_manage.jsp</result>
+		</action>
+		<action name="teacher_manage" class="cn.acgucheng.onlinejudge.action.RedirectAction" method="teacherManageRedirect">
+			<result name="success">/admin/teacher_manage.jsp</result>
+		</action>
+		<action name="delete_student" class="cn.acgucheng.onlinejudge.action.UserManageAction" method="deleteStudent">
+			<result name="success">/admin/student_manage</result>		
+		</action>
+		<action name="add_teacher" class="cn.acgucheng.onlinejudge.action.UserManageAction" method="addTeacher">
+			<result name="success" type="redirect">/admin/teacher_manage</result>		
+		</action>
+	</package>
+	
 </struts>    

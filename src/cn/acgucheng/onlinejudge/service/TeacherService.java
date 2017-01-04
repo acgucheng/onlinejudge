@@ -20,4 +20,14 @@ public class TeacherService {
 		TeacherDAO teacherDao = new TeacherDAO();
 		return teacherDao.findById(id);
 	}
+	
+	public List findAll(){
+		TeacherDAO td = new TeacherDAO();
+		return td.findAll();
+	}
+	
+	public void insertData(Teacher teacher){
+		TeacherDAO teacherDao = new TeacherDAO();
+		teacherDao.save(teacher);
+	}
 }

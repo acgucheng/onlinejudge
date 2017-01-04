@@ -49,8 +49,10 @@ public class StudentDAO extends BaseHibernateDAO {
 
 	public void delete(Student persistentInstance) {
 		log.debug("deleting Student instance");
+		Transaction trans = getSession().beginTransaction();
 		try {
 			getSession().delete(persistentInstance);
+			trans.commit();
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);

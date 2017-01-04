@@ -23,12 +23,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%@include file="menu.jsp" %>
   
   <body>
-    This is my JSP page. <br>
-    <a href="${pageContext.request.contextPath }/teacherLogin">老师登录</a>
-    <a href="${pageContext.request.contextPath }/teacher/add_problem.jsp">添加题目</a>
-    <a href="${pageContext.request.contextPath }/teacher/problem_database">查看题库</a>
-    <a href="${pageContext.request.contextPath }/teacher/create_exam">创建考试</a>
-    <a href="${pageContext.request.contextPath }/check_exam">查看考试</a>
-    <a href="${pageContext.request.contextPath }/teacher/check_score">查看成绩</a>
   </body>
 </html>

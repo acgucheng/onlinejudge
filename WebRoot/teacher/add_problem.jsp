@@ -4,6 +4,17 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<style>
+  	.padding-body{
+  		padding:20px;
+  		
+  	}
+  	.padding-panel{
+  		
+  		margin:10px;
+  	}
+ </style>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -25,10 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	</script>
   </head>
+  <%@include file="/menu.jsp" %>
   
   <body>
     <font>新建题目</font>
-    <div>
+    <div class="padding-body">
     	<form action="add_problem" method="post" >
 	    	<div><font>题目名：</font></div>
 	    	<div><input id="title" name="title"/></div>

@@ -31,7 +31,7 @@ public class AddProblemAction extends ActionSupport{
 		bp.display();
 		ps.insertData(problem);
 		
-		return NONE;
+		return "success";
 	}
 	
 	public String getTitle() {

@@ -5,7 +5,9 @@ import java.util.Set;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform.TransactionManagerAdapter.TransactionAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,9 +32,13 @@ public class TeacherDAO extends BaseHibernateDAO {
 	public static final String PASSWORD = "password";
 
 	public void save(Teacher transientInstance) {
+		Transaction trans = getSession().beginTransaction();
 		log.debug("saving Teacher instance");
 		try {
 			getSession().save(transientInstance);
+			getSession().flush();
+			getSession().close();
+			trans.commit();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -127,8 +133,11 @@ public class TeacherDAO extends BaseHibernateDAO {
 	public List findAll() {
 		log.debug("finding all Teacher instances");
 		try {
+			Transaction trans = getSession().beginTransaction();
 			String queryString = "from Teacher";
 			Query queryObject = getSession().createQuery(queryString);
+			getSession().flush();
+			trans.commit();
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);

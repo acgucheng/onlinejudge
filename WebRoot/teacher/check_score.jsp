@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<link rel="stylesheet" href="./css/bootstrap.min.css"/>
 <%@include file="/menu.jsp" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -22,23 +24,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <style>
+  .table-padding {
+			padding: 10px;
+			
+		}
+  </style>
   <body>
-    	<table>
-    		<tr>
+  	<div>
+    	<h1 class="text-center page-header">查看考试成绩</h1>
+    <div>
+  	<div class="table-padding">
+    	<table class="table table-striped">
+    		<thead>
     			<td>考试编号</td>
     			<td>考试名称</td>
     			<td>监考老师</td>
     			<td>操作</td>
-    		</tr>
+    		</thead>
     		<s:iterator var="p" value="Exams">
     			<tr>
-    				<td><s:property value="#p.id"/></td>
-    				<td><s:property value="#p.name"/></td>
-    				<td><s:property value="#p.teacher.name"/></td>
-    					<td><a href="${pageContext.request.contextPath }/teacher/exam_score?examID=<s:property value="#p.id"/>">查看成绩</a></td>
+    				<td style="width: 10%;"><s:property value="#p.id"/></td>
+    				<td style="width: 50%;"><s:property value="#p.name"/></td>
+    				<td style="width: 20%;"><s:property value="#p.teacher.name"/></td>
+    				<td style="width: 20%;"><a class="btn btn-success" href="${pageContext.request.contextPath }/teacher/exam_score?examID=<s:property value="#p.id"/>">查看成绩</a></td>
     			</tr>
     		</s:iterator>
     	</table>
+    </div>
   </body>
 </html>

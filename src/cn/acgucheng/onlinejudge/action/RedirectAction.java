@@ -10,6 +10,8 @@ import cn.acgucheng.onlinejudge.entity.Student;
 import cn.acgucheng.onlinejudge.service.ExamProblemService;
 import cn.acgucheng.onlinejudge.service.ExamService;
 import cn.acgucheng.onlinejudge.service.ProblemService;
+import cn.acgucheng.onlinejudge.service.StudentService;
+import cn.acgucheng.onlinejudge.service.TeacherService;
 import cn.acgucheng.onlinejudge.utils.BaseProblem;
 import cn.acgucheng.onlinejudge.utils.ProblemManager;
 import cn.acgucheng.onlinejudge.utils.SingleSelectProblem;
@@ -116,6 +118,20 @@ public class RedirectAction extends ActionSupport{
 		List exams = es.findAll();
 		ActionContext.getContext().getValueStack().set("Exams", exams);
 		return "checkScorePage";
+	}
+	
+	public String studentManageRedirect(){
+		StudentService ss = new StudentService();
+		List students = ss.findAll();
+		ActionContext.getContext().getValueStack().set("student_list", students);
+		return "success";
+	}
+	
+	public String teacherManageRedirect(){
+		TeacherService ts = new TeacherService();
+		List teachers = ts.findAll();
+		ActionContext.getContext().getValueStack().set("teacher_list", teachers);
+		return "success";
 	}
 	
 	

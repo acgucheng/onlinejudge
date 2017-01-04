@@ -23,10 +23,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
+  <style>
+  .table-padding {
+			padding: 10px;
+			
+		}
+  </style>
+  
   <body>
-    <div>学生成绩单</div>
     <div>
-    	<table>
+    	<h1 class="text-center page-header">学生成绩单</h1>
+    <div class="table-padding">
+    	<table class="table table-striped table-hover">
+    		<thead>
+    			<td>学生编号</td>
+    			<td>学生姓名</td>
+    			<td>学生班级</td>
+    			<td>成绩</td>
+    		</thead>
 	    	<s:iterator var="p" value="studentScoreList">
 	    		<tr>
 	    			<td><s:property value="#p.student.id"/></td>
